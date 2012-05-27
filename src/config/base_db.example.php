@@ -18,5 +18,3 @@ $baseport = '3306';
 $basename = 'databasenname';
 $baseuser = 'username';
 $basepasswd = 'password';
-
-?>

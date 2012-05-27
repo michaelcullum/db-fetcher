@@ -18,5 +18,3 @@ $targetport = '3306';
 $targetdbname = 'databasenname';
 $targetuser = 'username';
 $targetpasswd = 'password';
-
-?>

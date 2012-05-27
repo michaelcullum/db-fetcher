@@ -14,5 +14,3 @@
 $queries += array('Blah');
 $queries += array('Blah');
 $queries += array('Blah');
-
-?>

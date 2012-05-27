@@ -8,8 +8,9 @@
 */
 
 $root_path = './';
-$phpEx = '.php'
+$phpEx = '.php';
 
 define(IN_UPDATE, true);
 
 include($root_path . 'common' . $phpEx);
+
