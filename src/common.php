@@ -17,9 +17,12 @@ if (file_exists($root_path . 'custom_common' . $phpEx))
 	include($root_path . 'custom_common' . $phpEx);
 }
 
-include($root_path . 'config/base_db' . $phpEx);
-include($root_path . 'config/target_db' . $phpEx);
-include($root_path . 'config/custom_actions' . $phpEx);
+if (!isset($config_overide))
+{
+	include($root_path . 'config/base_db' . $phpEx);
+	include($root_path . 'config/target_db' . $phpEx);
+	include($root_path . 'config/custom_actions' . $phpEx);
+}
 
 include($root_path . 'includes/update_db' . $phpEx);
 
