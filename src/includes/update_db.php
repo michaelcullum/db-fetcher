@@ -10,12 +10,43 @@
 class update_db
 {
 	protected $base_connection;
-	protected $target_host;
+	protected $target_connection;
+	protected $base_db_name;
 	protected $target_db_name;
-	protected $target_user;
-	protected $target_passwd;
 
+	public function connect($whichone, $host = 'localhost', $port = '3306', $db_name, $user, $passwd)
+	{
+		$full_host = $host . ':' . $port;
 
+		switch ($whichone) {
+			case 'base':
+				$this->base_connection = mysql_connect($full_host, $user, $passwd);
+
+				if (!$this->base_connection)
+				{
+					die('Could not connect: ' . mysql_error());
+				}
+
+				$this->base_db_name = $db_name;
+			break;
+			
+			case 'target':
+				$this->target_connection = mysql_connect($full_host, $user, $passwd);
+
+				if (!$this->base_connection)
+				{
+					die('Could not connect: ' . mysql_error());
+				}
+
+				$this->target_db_name = $db_name;
+			break;
+		}
+	}
+
+	public function unconnect()
+	{
+		mysql_close($this->base_connection);
+	}
 }
 
 ?>
