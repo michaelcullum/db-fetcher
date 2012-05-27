@@ -12,6 +12,8 @@ if (!defined(IN_UPDATE))
 	exit;
 }
 
+$queries = array();
+
 if (file_exists($root_path . 'custom_common' . $phpEx))
 {
 	include($root_path . 'custom_common' . $phpEx);
