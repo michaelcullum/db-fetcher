@@ -24,3 +24,12 @@ Logging
 --------
 
 This will be added at a later date
+
+Requirements
+------------
+
+* Two DBs
+* Read Access to base DB
+* Full Global Access for target DB including global access.
+* MySQL on Both Databases
+* PHP 5.0
