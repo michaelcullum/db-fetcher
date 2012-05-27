@@ -26,8 +26,8 @@ include($root_path . 'includes/update_db' . $phpEx);
 $custom_actions = $queries;
 unset($queries);
 
-$update_db = new update_db;
+$update_db = new update_db($root_path, $phpEx);
 
 // Connect to base DB
-$update_db->connect($base, $basehost, $baseport, $basename, $baseuser, $basepasswd);
-$update_db->connect($target, $targethost, $targetport, $targetname, $targetuser, $targetpasswd);
+$update_db->connect('base', $basehost, $baseport, $basename, $baseuser, $basepasswd);
+$update_db->connect('target', $targethost, $targetport, $targetname, $targetuser, $targetpasswd);

@@ -13,6 +13,14 @@ class update_db
 	protected $target_connection;
 	protected $base_db_name;
 	protected $target_db_name;
+	protected $root_path;
+	protected $phpEx;
+
+	public function __construct ($root_path, $phpEx)
+	{
+		$this->root_path = $root_path;
+		$this->phpEx = $phpEx;
+	}
 
 	public function connect($whichone, $host = 'localhost', $port = '3306', $db_name, $user, $passwd)
 	{
@@ -29,7 +37,7 @@ class update_db
 
 				$this->base_db_name = $db_name;
 			break;
-			
+
 			case 'target':
 				$this->target_connection = mysql_connect($full_host, $user, $passwd);
 
