@@ -68,11 +68,30 @@ class update_db
 	/**
 	 * Disconnects from the database
 	 * 
+	 * @param string $whichone Set to base or target
 	 * @return boolean True if closed correctly
 	 */
-	public function unconnect()
+	public function unconnect($whichone)
 	{
-		return mysql_close($this->base_connection);
+		switch ($whichone) {
+			default:
+			case 'base':
+				$result = mysql_close($this->base_connection);
+			break;
+			
+			case 'target':
+				$result = mysql_close($this->target_connection);
+			break;
+		}
+
+		return $result;
+	}
+
+	private function fetch_base_tables()
+	{
+		$this->tables = mysql_list_tables($this->base_db_name, $this->base_connection);
+
+		return;
 	}
 
 	/**
@@ -82,7 +101,7 @@ class update_db
 	 */
 	public function fetch_base()
 	{
-		$this->tables = mysql_list_tables($this->base_db_name, $this->base_connection);
+		$this->fetch_base_tables;
 
 		foreach ($this->tables as $table) 
 		{
@@ -132,6 +151,8 @@ class update_db
 	 */
 	public function import_sql()
 	{
+		$this->fetch_base_tables;
+		
 		foreach ($this->tables as $table) 
 		{
 			mysql_select_db($this->target_db_name, $this->target_connection);
