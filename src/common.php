@@ -28,6 +28,8 @@ if (!isset($config_overide))
 
 // Manually load all the classes
 include($root_path . 'includes/update_db' . $phpEx);
+
+// phpBB Request Class Lib
 include($root_path . 'libs/phpBB/request/deactivated_super_global' . $phpEx);
 include($root_path . 'libs/phpBB/request/interface' . $phpEx);
 include($root_path . 'libs/phpBB/request/request' . $phpEx);
@@ -37,7 +39,7 @@ include($root_path . 'libs/phpBB/request/type_cast_helper_interface' . $phpEx);
 $custom_actions = $queries;
 unset($queries);
 
-$update_db = new update_db($root_path, $phpEx);
+$update_db	= new update_db($root_path, $phpEx);
 $request	= new phpbb_request();
 
 // Connect to base DB
