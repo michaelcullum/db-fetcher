@@ -26,12 +26,19 @@ if (!isset($config_overide))
 	include($root_path . 'config/custom_actions' . $phpEx);
 }
 
+// Manually load all the classes
 include($root_path . 'includes/update_db' . $phpEx);
+include($root_path . 'libs/phpBB/request/deactivated_super_global' . $phpEx);
+include($root_path . 'libs/phpBB/request/interface' . $phpEx);
+include($root_path . 'libs/phpBB/request/request' . $phpEx);
+include($root_path . 'libs/phpBB/request/type_cast_helper' . $phpEx);
+include($root_path . 'libs/phpBB/request/type_cast_helper_interface' . $phpEx);
 
 $custom_actions = $queries;
 unset($queries);
 
 $update_db = new update_db($root_path, $phpEx);
+$request	= new phpbb_request();
 
 // Connect to base DB
 $update_db->connect('base', $basehost, $baseport, $basename, $baseuser, $basepasswd);
